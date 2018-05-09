@@ -71,15 +71,15 @@ class ModForm extends React.Component {
       width: '100%',
     }}
     disabled={field.disabled}
-    multiple={field.multiple}
+    mode={field.mode}
   >
     {field.items().map(({ key, value }) =>
-      <Select.Option key={key.toString()} value={key.toString()}>{value}</Select.Option>)}
+      <Select.Option key={value.toString()} value={value.toString()}>{value}</Select.Option>)}
   </Select>)
 
   getRadioGroupField = field => <RadioGroup>
     {field.items().map(({ key, value }) =>
-      <Radio key={key.toString()} value={key.toString()}>{value}</Radio>
+      <Radio key={value.toString()} value={value.toString()}>{value}</Radio>
     )}
   </RadioGroup>
 

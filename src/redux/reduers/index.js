@@ -1,9 +1,9 @@
 
-import todos from './todo'
+import DriverList from './driver'
 import { combineReducers } from 'redux'
 
 const rootReducer = combineReducers({
-  todos
+  DriverList
 })
 
 export default rootReducer

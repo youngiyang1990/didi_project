@@ -14,7 +14,7 @@ class Main extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/index" component={Container} />
         <Route exact path="/admin/" component={Container} />
-        <Route exact path="/driver/" component={Container} />
+        <Route exact path="/admin/drivers/" component={Container} />
         <Route exact path="/login" component={Login} />
       </div>
 

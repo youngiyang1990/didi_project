@@ -8,6 +8,6 @@ export const allMenu = [
     url: 'driver',
     icon: 'car',
     children: [
-      { name: '司机管理', url: 'admin/driver' },
+      { name: '司机管理', url: '/admin/drivers' },
     ]
   }]

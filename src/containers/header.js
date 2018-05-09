@@ -1,7 +1,8 @@
 import React from 'react'
-import { Menu, Icon, Layout } from 'antd'
+import { Menu, Icon, Layout,message} from 'antd'
 import { Link } from 'react-router-dom'
 import './header.less'
+import Auth from '../utils/auth'
 
 const SubMenu = Menu.SubMenu
 const { Header } = Layout
@@ -20,7 +21,7 @@ export default class Top extends React.Component {
 
     getUser = () => {
         this.setState({
-            username: 'Youngi'
+            username: '超级管理员'
         })
     }
 
@@ -28,6 +29,11 @@ export default class Top extends React.Component {
         if (item.key === 'logOut') {
             this.props.clear()
         }
+    }
+    logout(){
+        Auth.logout(function(){
+            message.success("登出成功")
+        })
     }
 
 
@@ -41,7 +47,7 @@ export default class Top extends React.Component {
                 />
                 <Menu mode="horizontal" className="logOut"  style={{float:'right'}} onClick={this.clear}>
                     <SubMenu title={<span><Icon type="user" />{ this.state.username }</span>} >
-                        <Menu.Item key="logOut"><Link to="/login" >退出</Link></Menu.Item>
+                        <Menu.Item key="logOut"><Link to="/login" onClick={()=>this.logout()}  >退出</Link></Menu.Item>
                     </SubMenu>
                 </Menu>
 

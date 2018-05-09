@@ -15,7 +15,7 @@ export default class Contents extends React.Component {
       <Content className="content" id="content">
         <Switch>
         <Route exact path="/admin" component={DashBoard} />
-        <Route exact path="/admin/driver" component={Driver} />
+        <Route exact path="/admin/drivers" component={Driver} />
         </Switch>
       </Content>
     )

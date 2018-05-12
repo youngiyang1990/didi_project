@@ -8,6 +8,7 @@ const DriverSchema = new Schema({
   idNumber:{ type: String },  //身份证号码
   idAddress:{ type: String }, //身份证住址
   stayAdress:{ type: String  }, //居住证住址
+  stayAdressId:{ type: String  },  //居住证号
   licenseType:{ type: Array }, //驾驶证类型
   licenseDate:{ type: Date }, //初领驾驶证日期  
   status:{ type: String },  //考试状态

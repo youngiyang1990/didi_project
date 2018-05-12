@@ -1,4 +1,4 @@
-import { EXPECT_DRIVER_LIST, DRIVER_LIST_FAIL,DRIVER_LIST_SUCCESS,EXPECT_DRIVER_ITEM,DRIVER_ITEM_SUCCESS,DRIVER_ITEM_FAIL,EXPECT_SEARCH_DRIVER,SEARCH_DRIVER_SUCCESS,GET_TOTAL_SUCCESS,ADD_DRIVER_SUCCESS
+import { EXPECT_DRIVER_LIST, DRIVER_LIST_FAIL,DRIVER_LIST_SUCCESS,EXPECT_DRIVER_ITEM,DRIVER_ITEM_SUCCESS,DRIVER_ITEM_FAIL,EXPECT_SEARCH_DRIVER,SEARCH_DRIVER_SUCCESS,GET_TOTAL_SUCCESS,ADD_DRIVER_SUCCESS, ADD_DRIVER_FAIL
 } from '../actions/driver'
 
 
@@ -7,6 +7,7 @@ import { EXPECT_DRIVER_LIST, DRIVER_LIST_FAIL,DRIVER_LIST_SUCCESS,EXPECT_DRIVER_
   function DriverList(state = {
     loading: true,
     drivers: [],
+    message:'',
     driver:{
       createdAt : '',
       idNumber : '',
@@ -19,7 +20,6 @@ import { EXPECT_DRIVER_LIST, DRIVER_LIST_FAIL,DRIVER_LIST_SUCCESS,EXPECT_DRIVER_
       _id : ''
     },
     total:'',
-    insertState:{}
   },action){
     console.log(action.type);
     switch (action.type) {
@@ -56,7 +56,11 @@ import { EXPECT_DRIVER_LIST, DRIVER_LIST_FAIL,DRIVER_LIST_SUCCESS,EXPECT_DRIVER_
           })
           case ADD_DRIVER_SUCCESS:
           return Object.assign({}, state, {
-            insertState:action.message
+            message:action.message
+          })
+          case ADD_DRIVER_FAIL:
+          return Object.assign({}, state, {
+            message:action.message
           })
         default:
           return state

@@ -64,10 +64,12 @@ app.post('/driver', (req, res) => {
       const driver = new Driver(req.body.params)
       driver.isDelete = false
       driver.status = "审查中"
-      driver.save(function(err){
-        if(err) console.log(err)
+      driver.save(function(error) {
+        if (error) return res.status(500).json({error: '增加司机失败'})
+        res.json({
+          message: '司机新增成功'
         })
-        res.json({ message: '增加司机成功' });
+      })
         }
       })
     

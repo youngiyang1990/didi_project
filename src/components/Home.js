@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from '../components/SearchBar/SearchBar';
-import { Row, Col } from 'antd';
+import { Row, Col,Card } from 'antd';
 import { Table } from 'antd';
 import { connect } from 'react-redux';
 import Auth from '../utils/auth'
@@ -50,7 +50,7 @@ class Home extends React.Component {
         </div>
         
         <h3  style={commonStyle}>扫描以下二维码或者更多司机福利</h3>
-        <img alt="example" style={{ width: '50%' }} src='https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png' />
+        <img alt="example" style={{ width: '50%' }} src={require('./images/wanrenchehui.jpeg')} />
         </Col>
       </Row>
         

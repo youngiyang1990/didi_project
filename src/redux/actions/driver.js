@@ -18,6 +18,7 @@ export function getDriverListSuccess(drivers){
 }
 
 export function getDriverList(page=1,pageSize=10){
+  console.log('重新渲染数据')
   return (dispatch) => {
     dispatch(expectGetDriverList())
      axios('./drivers',{ 
@@ -205,6 +206,8 @@ export function getTotal(){
 
 export const EXPECT_ADD_DRIVER = 'EXPECT_ADD_DRIVER'
 export const ADD_DRIVER_SUCCESS = 'ADD_DRIVER_SUCCESS'
+export const ADD_DRIVER_FAIL = 'ADD_DRIVER_FAIL'
+
 
 export function expectAddDriver(){
   return{
@@ -217,6 +220,12 @@ export function addDriverSuccess(message){
     message
   }
 }
+export function addDriverFail(message){
+  return {
+    type: ADD_DRIVER_FAIL,
+    message
+  }
+}
 
 export function addDriver(params){
   return (dispatch) => {
@@ -224,7 +233,11 @@ export function addDriver(params){
     axios.post('/driver',{
       params
     })
-    .then( res => dispatch(addDriverSuccess(res.data))
+    .then( 
+      res => dispatch(addDriverSuccess(res.data))
     )
+    .catch(function (error) {
+      dispatch(addDriverFail('相同手机号已经存在,新增失败'))
+    });
   }
 }

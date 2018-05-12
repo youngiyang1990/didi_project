@@ -185,7 +185,7 @@ class ModForm extends React.Component {
       }}
     >
       <div className="buttons">
-        {this.props.showCancel && <Button onClick={this.doCancel} >取消</Button>}
+        {this.props.showCancel && <Button style={{marginRight:100}} onClick={this.doCancel} >取消</Button>}
         {!this.props.noBtn && <Button type="primary" htmlType="submit">{this.props.okText || '确定'}</Button>}
       </div>
 

@@ -42,7 +42,11 @@ class Driver extends Component {
     const { dispatch,message } = this.props
     dispatch(addDriver(params))
     this.onCancel()
-    message.success('增加司机成功')
+    if(message === "相同手机号已经存在,新增失败"){
+      message.error(message)
+    }else{
+      message.success('增加司机成功')
+    }
     dispatch(getDriverList())
   }
 
@@ -136,6 +140,15 @@ class Driver extends Component {
       label: '身份证住址',
       type: 'input',
       name: 'idAddress',
+      options: {
+          rules: [{
+              required: false,
+          }]
+      }
+    },{
+      label: '居住证号',
+      type: 'input',
+      name: 'stayAdressId',
       options: {
           rules: [{
               required: false,
@@ -244,6 +257,16 @@ class Driver extends Component {
           }]
       }
     },{
+      label: '居住证号',
+      type: 'input',
+      name: 'stayAdressId',
+      options: {
+        initialValue:driver.stayAdressId,
+          rules: [{
+              required: false,
+          }]
+      }
+    },{
       label: '居住证住址',
       type: 'input',
       name: 'stayAdress',
@@ -315,10 +338,12 @@ class Driver extends Component {
       },
     });
   }
+
   componentDidMount(){
     const {total} = this.props
     this.props.dispatch(getTotal())
     this.props.dispatch(getDriverList())
+    
   }
 
 
@@ -474,7 +499,7 @@ function mapStateToProps(state) {
       driver:state.DriverList.driver,
       loading:state.DriverList.loading,
       total:state.DriverList.total,
-      message:state.DriverList.insertState
+      message:state.DriverList.message
    };
 }
 
